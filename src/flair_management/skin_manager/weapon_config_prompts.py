@@ -19,7 +19,7 @@ class Prompts:
             {"name": "Melee", "value": "Melee"}
         ]
         type_choice = inquirer.select(
-            message=f"select a weapon type",
+            message=f"Selecione um tipo de arma:",
             choices=type_choices,
             pointer=">",
             default=default,
@@ -55,7 +55,7 @@ class Prompts:
         weapon_choices.insert(0, {"name": "back", "value": "back"})
 
         weapon_choice = inquirer.select(
-            message=f"[{weapon_type}] select a weapon to view the skins of",
+            message=f"[{weapon_type}] Selecione uma arma para ver as skins",
             choices=weapon_choices,
             pointer=">"
         ).execute()
@@ -94,7 +94,7 @@ class Prompts:
             skin_choices.insert(1, {"name": ("disable" if skins_enabled == total_skins else "enable") + " all skins/chromas", "value": "change_all"}) 
 
         skin_choice = inquirer.select(
-            message=f"[{weapon_data['display_name']}] select a skin to modify",
+            message=f"[{weapon_data['display_name']}] Selecione uma skin para modificar",
             choices=skin_choices,
             pointer=">"
         ).execute()
