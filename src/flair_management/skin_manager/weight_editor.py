@@ -19,7 +19,7 @@ class Weight_Editor:
     def set_weight(skin_data):
         current_weight = str(skin_data["weight"])
         new_weight = inquirer.text(
-            message=f"[{skin_data['display_name']}] enter randomizer weight (currently {current_weight})",
+            message=f"[{skin_data['display_name']}] Selecione o peso para a aleatorização (peso atual {current_weight})",
             default=current_weight,
             validate=lambda result: result.isdigit(),
             filter=lambda result: int(result)
