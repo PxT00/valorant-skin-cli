@@ -28,7 +28,7 @@ if __name__ == "__main__":
     except:
         user32.ShowWindow(hWnd, 1)
         kernel32.SetConsoleMode(kernel32.GetStdHandle(-10), (0x4|0x80|0x20|0x2|0x10|0x1|0x40|0x100))
-        color_print([("Red bold","the program encountered an error; please create an issue with the traceback below if this problem persists")])
+        color_print([("Red bold","OOPS! O programa encontrou um erro, crie um Issue com o traceback abaixo!")])
         traceback.print_exc()
-        input("press enter to exit...")
+        input("pressione Enter para sair...")
         os._exit(1)
