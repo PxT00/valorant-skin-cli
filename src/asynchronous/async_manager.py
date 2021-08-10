@@ -14,7 +14,7 @@ class Async_Manager:
         self.coregame_manager = Coregame_Manager(self.client)
 
     def init_loop(self):
-        color_print([("LimeGreen","randomizer ready!")])
+        color_print([("LimeGreen","Randomizer pronto!")])
         self.loop.run_until_complete(self.main_loop())
 
     async def main_loop(self):
