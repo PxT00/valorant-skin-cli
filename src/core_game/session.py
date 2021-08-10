@@ -30,7 +30,7 @@ class Session:
             self.presence = self.client.fetch_presence()
             await self.randomizer_check()
         except:
-            color_print([("Tomato","VALORANT is no longer running, terminating thread!")])
+            color_print([("Tomato","VALORANT não está mais rodando, saindo...")])
             os._exit(1)
 
         return self.presence
