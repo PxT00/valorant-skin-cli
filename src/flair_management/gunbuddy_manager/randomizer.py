@@ -47,4 +47,4 @@ class Buddy_Randomizer:
                         randomizer_pool.pop(buddy_index)
 
         client.put_player_loadout(loadout=loadout)
-        color_print([("Lime", "randomized buddies")])
+        color_print([("Lime", "Os chaveiros foram aleatorizados!")])
