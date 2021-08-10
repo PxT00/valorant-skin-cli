@@ -13,7 +13,7 @@ class Command_Validator(Validator):
             if command not in list(commands.keys()):
                 # validator for regular commands
                 raise ValidationError(
-                    message="Invalid command",
+                    message="Comando inválido!",
                     cursor_position=len(document.text)
                 )
             else:
@@ -24,7 +24,7 @@ class Command_Validator(Validator):
                     completer_data = commands["set"]
                     if len(args) < 2:
                         raise ValidationError(
-                            message="Missing required arguments",
+                            message="Este comando necessita de argumentos adicionais.",
                             cursor_position=len(document.text)
                         )
                     valid = False
@@ -43,11 +43,11 @@ class Command_Validator(Validator):
                         raise Exception
                     except Exception:
                         raise ValidationError(
-                            message="Syntax error, ensure you entered a valid weapon/skin",
+                            message="Erro de sintaxe, tenha certeza de que você digitou uma skin/arma válida.",
                             cursor_position=len(document.text)
                         )
         else:
             raise ValidationError(
-                message="Enter a command",
+                message="Digite um comando.",
                 cursor_position=len(document.text)
             )
