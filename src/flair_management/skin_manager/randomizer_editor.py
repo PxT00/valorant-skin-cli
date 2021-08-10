@@ -62,7 +62,7 @@ class Randomizer_Editor:
 
         # preferences prompt
         skin_preferences = inquirer.checkbox(
-            message=f"modify skin preferences for {skin_data['display_name']}",
+            message=f"Modificar configurações de skin para: {skin_data['display_name']}",
             choices=preferences,
             instruction='(space - toggle, enter - finish)',
             pointer='>',
