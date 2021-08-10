@@ -29,8 +29,8 @@ class Skin_Randomizer:
                 weapon['SkinLevelID'] = list(skin['levels'].keys())[level_index]
                 weapon['ChromaID'] = list(skin['chromas'].keys())[chroma_index]
             else:
-                color_print([("Yellow bold", f"[!] {all_skins[weapon['ID']]['display_name']} has no skins in the randomizer pool, using currently equipped skin")])
+                color_print([("Yellow bold", f"[!] {all_skins[weapon['ID']]['display_name']} não tem nenhuma skin na lista de aleatorização, mantendo a skin atual.")])
             
         new = client.put_player_loadout(loadout=loadout)
         
-        color_print([("Lime", "randomized skins")])
+        color_print([("Lime", "Skins aleatorizadas.")])
