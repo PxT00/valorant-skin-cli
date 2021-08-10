@@ -19,8 +19,8 @@ class Buddy_Loader:
         try:
             existing_buddy_data = Buddies_Manager.fetch_all_buddies()
         except:
-            debug("buddy data integrity check failed!")
-            color_print( [("Yellow bold", "[!] integrity check of buddy data file failed; generating fresh file")])
+            debug("A checagem de integridade dos dados dos Chaveiros falhou")
+            color_print( [("Yellow bold", "[1]Gerando novo arquivo de chaveiros, a checagem de integridade dos dados falharam!")])
             existing_buddy_data = Buddies_Manager.generate_blank_buddies_file()
 
         sanitized_buddy_entitlements = {}
@@ -37,7 +37,7 @@ class Buddy_Loader:
                 buddy_already_exists = buddy["uuid"] in existing_buddy_data.keys()
 
                 if not buddy_already_exists:
-                    color_print([("Blue", f"new buddy found -> {buddy['displayName']}")])
+                    color_print([("Blue", f"novo chaveiro encontrado! -> {buddy['displayName']}")])
 
                 buddy_uuid = buddy["uuid"]
                 buddy_data = {
