@@ -17,21 +17,21 @@ class Loadout_Actions:
     @staticmethod
     def create_loadout(client):          
 
-        color_print([("Blue bold","\nbuild a loadout!")])
+        color_print([("Blue bold","\nfaça um loadout!")])
         all_loadouts = Loadouts_Manager.fetch_all_loadouts()
         loadout_names = [loadout["name"] for loadout in all_loadouts]
         equipped_loadout = client.fetch_player_loadout()
 
         loadout_name = inquirer.text(
-            message="name this loadout:",
+            message="Nomeie esse loadout:",
             validate=lambda response: isinstance(response, str) and not response in loadout_names and not response == "" and response is not None,
-            invalid_message="invalid loadout name (already exists or is empty)"
+            invalid_message="Nome inválido! (Já existe ou nome vazio)"
         ).execute()
 
-        color_print([("Blue bold", "\npreview:")])
+        color_print([("Blue bold", "\nPré-visualização:")])
         Loadout_Actions.print_loadout(client)
 
-        confirm = inquirer.confirm(message=f"do you want to save this loadout as '{loadout_name}'?", default=True).execute()
+        confirm = inquirer.confirm(message=f"Você quer salvar esse loadout como: '{loadout_name}'?", default=True).execute()
         if confirm:
             loadout = {
                 "name": loadout_name,
@@ -45,7 +45,7 @@ class Loadout_Actions:
             }
 
             Loadouts_Manager.add_loadout(loadout)
-            color_print([("LimeGreen",f"loadout '{loadout_name}' saved!"),("Blue","\nrun "),("White",f"loadout equip {loadout_name.replace(' ', '-')}"),("Blue", " to equip it")]) 
+            color_print([("LimeGreen",f"Loadout '{loadout_name}' salvo!"),("Blue","\ndigite "),("White",f"loadout equip {loadout_name.replace(' ', '-')}"),("Blue", " para equipá-lo")]) 
 
     @staticmethod 
     def equip_loadout(loadout_name, client):
@@ -58,12 +58,12 @@ class Loadout_Actions:
                 new_loadout["Identity"]["PlayerCardID"] = loadout["Identity"]["PlayerCardID"]
                 new_loadout["Identity"]["PlayerTitleID"] = loadout["Identity"]["PlayerTitleID"]
                 client.put_player_loadout(new_loadout)
-                color_print([("LimeGreen bold",f"successfully equipped {loadout_name}!")])
+                color_print([("LimeGreen bold",f"Equipado com sucesso! {loadout_name}!")])
 
     @staticmethod 
     def delete_loadout(loadout_name):
         all_loadouts = Loadouts_Manager.remove_loadout(loadout_name)
         new_loadout_names = [loadout["name"] for loadout in all_loadouts]
-        color_print([("LimeGreen",f"successfully deleted {loadout_name}!")])
+        color_print([("LimeGreen",f"Deletado com sucesso! {loadout_name}!")])
         if len(new_loadout_names) > 0:
-            color_print([("LimeGreen","\nyour loadouts list:\n"),("Blue","\n".join(f"- {name}" for name in new_loadout_names))])
+            color_print([("LimeGreen","\nSua lista de loadouts:\n"),("Blue","\n".join(f"- {name}" for name in new_loadout_names))])
