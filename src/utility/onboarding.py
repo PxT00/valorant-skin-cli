@@ -21,27 +21,27 @@ class Onboarder:
 
         self.procedure = [
             {
-                "text": "autodetecting region",
+                "text": "Auto-detectando região",
                 "method": self.autodetect_region,
                 "args": None,
             },
             {
-                "text": "generating fresh skin data file...",
+                "text": "Gerando novo arquivo de skins...",
                 "method": Skin_Manager.generate_blank_skin_file,
                 "args": None
             },
             {
-                "text": "generating blank loadouts file...",
+                "text": "Gerando arquivo vazio de Loadouts...",
                 "method": Loadouts_Manager.generate_blank_loadouts_file,
                 "args": None
             },
             {
-                "text": "loading your skins...",
+                "text": "Carregando suas skins...",
                 "method": Skin_Loader.generate_skin_data,
                 "args": (self.client,),
             },
             {
-                "text": "set your skin preferences:",
+                "text": "Escolha suas configurações de skin:",
                 "method": Randomizer_Editor.randomizer_entrypoint,
                 "args": None,
             }
@@ -64,7 +64,7 @@ class Onboarder:
 
         self.config["meta"]["onboarding_completed"] = True
         app_config.modify_config(self.config)
-        color_print([("Lime bold", "onboarding completed!")])
+        color_print([("Lime bold", "integração completada!")])
 
 
     def autodetect_region(self):
@@ -80,7 +80,7 @@ class Onboarder:
                             region = arg.replace("-ares-deployment=","")
                             self.config["region"][0] = region
                             app_config.modify_config(self.config)
-                            color_print([("LimeGreen",f"autodetected region: {self.config['region'][0]}")])
+                            color_print([("LimeGreen",f"região auto-detectada: {self.config['region'][0]}")])
                             Reload()
         else:
-            color_print([("LimeGreen",f"region: {self.config['region'][0]}")])
+            color_print([("LimeGreen",f"região: {self.config['region'][0]}")])
